@@ -14,6 +14,7 @@ export default function Registration() {
     <>
       <div>
         {!isAuth && <S.NavLink to='signUp'>Sign Up</S.NavLink>}
+        {/* <S.Btn onClick={() => setModalContent(<SignUp />)}>Sign Up</S.Btn> */}
         {userName && !isAuth && <S.NavLink to='signIn'>Sign In</S.NavLink>}
       </div>
       {isAuth && (

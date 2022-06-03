@@ -17,6 +17,8 @@ interface State {
   increaseNumber(id: number): void;
   decreaseNumber(id: number): void;
 
+  isModalOpen: boolean;
+  toggleModalOpen(): void;
   modalContent: ReactNode;
   setModalContent(modalContent: ReactNode): void;
 }
@@ -57,6 +59,9 @@ export const useStore = create<State>(set => ({
       }),
     })),
 
+  isModalOpen: false,
+  toggleModalOpen: () =>
+    set(({ isModalOpen }) => ({ isModalOpen: !isModalOpen })),
   modalContent: null,
   setModalContent: modalContent => set(() => ({ modalContent })),
 }));

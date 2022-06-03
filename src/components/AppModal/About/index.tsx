@@ -8,7 +8,7 @@ const data = [
   ['Forms Validation', 'Zod', 'https://zod.dev/'],
   ['HTTP client', 'Axios', 'https://axios-http.com/'],
   [
-    'Fetch, Cache and Update data',
+    'Fetching, Caching and Updating data',
     'React Query',
     'https://react-query.tanstack.com/',
   ],
@@ -34,11 +34,11 @@ type Props = {
 const Row = ({ title, value, src }: Props) => (
   <tr>
     <S.LeftCell>{title}</S.LeftCell>
-    <S.RightCell>
+    <td>
       <S.Link href={src} target='_blank' rel='noopener noreferer' title={src}>
         {value}
       </S.Link>
-    </S.RightCell>
+    </td>
   </tr>
 );
 

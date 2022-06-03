@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+:root {
+  --color-primary: #802c6e;
+}
+
 html {
   scroll-behavior: smooth;
 }

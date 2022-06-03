@@ -7,7 +7,7 @@ export default {
     top: 0;
     padding: 15px 0;
     color: #f5f5f5;
-    background-color: ${({ theme }) => theme.primary};
+    background-color: var(--color-primary);
   `,
 
   Container: styled.div`

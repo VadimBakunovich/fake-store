@@ -20,7 +20,7 @@ export default {
   Heading: styled.h1`
     margin-bottom: 20px;
     font-size: 46px;
-    color: ${({ theme }) => theme.primary};
+    color: var(--color-primary);
   `,
 
   Descr: styled.p`

@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Btn = styled.button`
-  background-color: ${({ theme }) => theme.primary};
+  background-color: var(--color-primary);
 `;
 
 type Props = { isVisible: boolean };
@@ -53,7 +52,7 @@ export default {
 
   Confirmation: styled.p<Props>`
     font-size: 20px;
-    color: ${({ theme }) => theme.primary};
+    color: var(--color-primary);
     transition: 0.5s;
     opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
     visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};

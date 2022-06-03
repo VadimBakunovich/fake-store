@@ -5,7 +5,7 @@ export const LinkBtn = styled(Link)`
   width: fit-content;
   padding: 10px 20px;
   font-size: 18px;
-  background-color: ${({ theme }) => theme.primary};
+  background-color: var(--color-primary);
   border-radius: 5px;
   box-shadow: 2px 2px 4px black;
   :hover {

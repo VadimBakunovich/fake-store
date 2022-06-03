@@ -7,11 +7,11 @@ export default {
     padding: 20px;
     display: flex;
     align-items: center;
-    border: ${({ theme }) => `1px solid ${theme.primary}`};
+    border: 1px solid var(--color-primary);
     border-radius: 10px;
     transition: 0.3s;
     :hover {
-      box-shadow: ${({ theme }) => `2px 3px 6px ${theme.primary}`};
+      box-shadow: 2px 3px 6px var(--color-primary);
     }
   `,
 
@@ -43,7 +43,7 @@ export default {
     width: 40px;
     height: 40px;
     font-size: 15px;
-    background-color: ${({ theme }) => theme.primary};
+    background-color: var(--color-primary);
     border-radius: 50%;
     box-shadow: 2px 2px 2px grey;
   `,

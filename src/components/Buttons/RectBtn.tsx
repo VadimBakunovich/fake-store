@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-import { BaseBtn } from './BaseBtn';
+const BaseBtn = styled.button`
+  background-color: var(--color-primary);
+`;
 
 export const RectBtn = styled(BaseBtn)`
   padding: 10px 20px;

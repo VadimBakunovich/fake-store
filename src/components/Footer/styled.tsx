@@ -10,11 +10,11 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     color: #f5f5f5;
-    background-color: ${({ theme }) => theme.primary};
+    background-color: var(--color-primary);
   `,
 
   Btn: styled.button`
-    padding: 5px 10px;
+    padding: 0 10px 5px 10px;
     font-size: inherit;
     color: #f5f5f5;
     border: 1px solid transparent;

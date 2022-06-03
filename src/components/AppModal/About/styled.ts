@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default {
   Container: styled.div`
-    width: 500px;
+    width: 550px;
     height: 685px;
     display: flex;
     flex-direction: column;
@@ -25,8 +25,6 @@ export default {
     font-weight: 600;
   `,
 
-  RightCell: styled.td``,
-
   Link: styled.a`
     display: block;
     padding: 7px 10px;
@@ -38,7 +36,7 @@ export default {
     transition: 0.3s;
     :hover {
       color: white;
-      background-color: ${({ theme }) => theme.primary};
+      background-color: var(--color-primary);
     }
   `,
 
@@ -46,7 +44,7 @@ export default {
     font-weight: 600;
     color: initial;
     :hover {
-      color: ${({ theme }) => theme.primary};
+      color: var(--color-primary);
     }
   `,
 };

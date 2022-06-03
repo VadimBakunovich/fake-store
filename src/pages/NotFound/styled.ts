@@ -12,7 +12,7 @@ export default {
   Icon: styled.span`
     margin-right: 50px;
     font-size: 120px;
-    color: ${({ theme }) => theme.primary};
+    color: var(--color-primary);
   `,
 
   Text: styled.span`

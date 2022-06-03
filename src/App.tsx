@@ -1,7 +1,5 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ThemeProvider } from 'styled-components';
 
-import { theme } from 'theme';
 import { AppRouter } from 'router';
 
 const queryClient = new QueryClient({
@@ -15,8 +13,6 @@ const queryClient = new QueryClient({
 
 export const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider theme={theme}>
-      <AppRouter />
-    </ThemeProvider>
+    <AppRouter />
   </QueryClientProvider>
 );
