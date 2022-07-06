@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 import { useStore } from 'store';
-import { IProduct } from 'interfaces';
+import IProduct from 'interfaces';
 import S from './styled';
 
 interface Props {
@@ -13,7 +13,7 @@ export default function CartItem({ item }: Props) {
   const { delFromCart, increaseNumber, decreaseNumber } = useStore();
 
   function handleSubtract() {
-    if (item.number > 1) decreaseNumber(item.id);
+    if (item.number! > 1) decreaseNumber(item.id);
   }
 
   function getPrettyPrice({ number = 1, price }: IProduct) {
@@ -23,7 +23,7 @@ export default function CartItem({ item }: Props) {
 
   return (
     <S.Li>
-      <S.Link to={`product/${item.id}`} title='go to product details'>
+      <S.Link to={`/product/${item.id}`} title='go to product details'>
         <S.Img src={item.image} alt='product image' />
       </S.Link>
       <S.Title>{item.title}</S.Title>

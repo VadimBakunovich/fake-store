@@ -5,15 +5,20 @@ import { useStore } from 'store';
 Modal.setAppElement('#root');
 
 export default function AppModal() {
-  const { isModalOpen, toggleModalOpen, modalContent } = useStore();
+  const { isModalOpen, modalContent, toggleModalOpen } = useStore();
 
   return (
     <Modal
+      overlayClassName=' '
+      className=' '
       isOpen={isModalOpen}
-      onRequestClose={toggleModalOpen}
-      closeTimeoutMS={400}
+      onRequestClose={() => toggleModalOpen()}
+      closeTimeoutMS={300}
     >
-      <button className='ReactModal__Btn-close' onClick={toggleModalOpen}>
+      <button
+        className='ReactModal__Btn-close'
+        onClick={() => toggleModalOpen()}
+      >
         ✖
       </button>
       {modalContent}

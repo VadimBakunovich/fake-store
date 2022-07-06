@@ -2,10 +2,9 @@ import { useState, useRef } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { AnimatedContainer } from 'components/AnimatedContainer';
 import { useStore } from 'store';
 import api from 'api';
-import { IProduct } from 'interfaces';
+import IProduct from 'interfaces';
 import S from './styled';
 import { RectBtn } from 'components/Buttons/RectBtn';
 import { LinkBtn } from 'components/Buttons/LinkBtn';
@@ -42,7 +41,7 @@ export default function Product() {
   if (isLoading) return <h3>Loading...</h3>;
 
   return (
-    <AnimatedContainer>
+    <>
       <S.RoundBtn onClick={() => navigate(-1)} title='go back'>
         &#8617;
       </S.RoundBtn>
@@ -63,6 +62,6 @@ export default function Product() {
         </S.Wrapper>
         <S.Img src={data?.image} alt='product image' />
       </S.Container>
-    </AnimatedContainer>
+    </>
   );
 }

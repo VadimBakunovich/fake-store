@@ -2,8 +2,10 @@ import { useStore } from 'store';
 import S from './styled';
 
 export default function Registration() {
-  const { isAuth, userName, emptyCart, toggleAuthorize, setModalContent } =
-    useStore();
+  const isAuth = useStore(state => state.isAuth);
+  const userName = useStore(state => state.userName);
+  const emptyCart = useStore(state => state.emptyCart);
+  const toggleAuthorize = useStore(state => state.toggleAuthorize);
 
   function handleClick() {
     emptyCart();
@@ -14,7 +16,6 @@ export default function Registration() {
     <>
       <div>
         {!isAuth && <S.NavLink to='signUp'>Sign Up</S.NavLink>}
-        {/* <S.Btn onClick={() => setModalContent(<SignUp />)}>Sign Up</S.Btn> */}
         {userName && !isAuth && <S.NavLink to='signIn'>Sign In</S.NavLink>}
       </div>
       {isAuth && (

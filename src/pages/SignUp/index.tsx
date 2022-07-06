@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { AnimatedContainer } from 'components/AnimatedContainer';
 import { ValidationError } from 'components/ValidationError';
 import F from 'components/FormItems';
 import { EyeBtn } from 'components/Buttons/EyeBtn';
@@ -31,17 +30,17 @@ export default function SignUp() {
     formState: { errors },
   } = useForm<Inputs>({ mode: 'onBlur', resolver: zodResolver(schema) });
 
-  const onSubmit = ({ userName, email, password }: Inputs) => {
+  function onSubmit({ userName, email, password }: Inputs) {
     localStorage.setItem('fake store userName', userName);
     localStorage.setItem('fake store userEmail', email);
     localStorage.setItem('fake store userPassw', password);
     setUserName(userName);
     toggleAuthorize();
     navigate('/', { replace: true });
-  };
+  }
 
   return (
-    <AnimatedContainer>
+    <>
       <F.Title>Registration</F.Title>
       <F.Form onSubmit={handleSubmit(onSubmit)}>
         <F.Input
@@ -87,6 +86,6 @@ export default function SignUp() {
         <F.Note>{C.NOTE}</F.Note>
         <RectBtnUC type='submit'>submit</RectBtnUC>
       </F.Form>
-    </AnimatedContainer>
+    </>
   );
 }

@@ -6,7 +6,6 @@ const data = [
   ['Routing', 'React Router', 'https://reactrouter.com/'],
   ['Forms', 'React Hook Form', 'https://react-hook-form.com/'],
   ['Forms Validation', 'Zod', 'https://zod.dev/'],
-  ['HTTP client', 'Axios', 'https://axios-http.com/'],
   [
     'Fetching, Caching and Updating data',
     'React Query',

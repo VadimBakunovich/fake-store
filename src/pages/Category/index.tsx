@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import api from 'api';
 import { Cards } from 'components/Cards';
 import { SkeletonCards } from 'components/Skeletons/SkeletonCards';
-import { IProduct } from 'interfaces';
+import IProduct from 'interfaces';
 
 export default function Category() {
   const { category } = useParams();

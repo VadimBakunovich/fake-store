@@ -1,4 +1,3 @@
-import { AnimatedContainer } from 'components/AnimatedContainer';
 import CartItem from 'components/CartItem';
 import { LinkBtn } from 'components/Buttons/LinkBtn';
 import { useStore } from 'store';
@@ -13,7 +12,7 @@ export default function CartPage() {
   }
 
   return (
-    <AnimatedContainer>
+    <>
       {!cart.length && <h2>Your cart is empty</h2>}
       {!!cart.length && (
         <>
@@ -30,6 +29,6 @@ export default function CartPage() {
           </S.Wrapper>
         </>
       )}
-    </AnimatedContainer>
+    </>
   );
 }

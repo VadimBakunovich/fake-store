@@ -5,7 +5,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { useStore } from 'store';
 
 export default function Cart() {
-  const { cart } = useStore();
+  const cart = useStore(state => state.cart);
 
   return (
     <NavLink to='cart'>

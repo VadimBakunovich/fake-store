@@ -2,13 +2,10 @@ import { About } from 'components/AppModal/About';
 import { useStore } from 'store';
 import S from './styled';
 
-export const Footer = () => {
-  const { setModalContent, toggleModalOpen } = useStore();
+export default function Footer() {
+  const { toggleModalOpen } = useStore();
 
-  function handleClick() {
-    setModalContent(<About />);
-    toggleModalOpen();
-  }
+  const handleClick = () => toggleModalOpen(<About />);
 
   return (
     <S.Footer>
@@ -23,4 +20,4 @@ export const Footer = () => {
       </a>
     </S.Footer>
   );
-};
+}

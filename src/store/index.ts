@@ -1,7 +1,6 @@
-import { ReactNode } from 'react';
 import create from 'zustand';
 
-import { IProduct } from 'interfaces';
+import IProduct from 'interfaces';
 
 interface State {
   isAuth: boolean;
@@ -18,9 +17,8 @@ interface State {
   decreaseNumber(id: number): void;
 
   isModalOpen: boolean;
-  toggleModalOpen(): void;
-  modalContent: ReactNode;
-  setModalContent(modalContent: ReactNode): void;
+  modalContent: JSX.Element | null;
+  toggleModalOpen(modalContent?: JSX.Element): void;
 }
 
 export const useStore = create<State>(set => ({
@@ -52,7 +50,7 @@ export const useStore = create<State>(set => ({
       cart: cart.map(item => {
         if (item.id === id) {
           const newItem = { ...item };
-          newItem.number -= 1;
+          newItem.number! -= 1;
           return newItem;
         }
         return item;
@@ -60,8 +58,11 @@ export const useStore = create<State>(set => ({
     })),
 
   isModalOpen: false,
-  toggleModalOpen: () =>
-    set(({ isModalOpen }) => ({ isModalOpen: !isModalOpen })),
   modalContent: null,
-  setModalContent: modalContent => set(() => ({ modalContent })),
+  toggleModalOpen: modalContent =>
+    set(() =>
+      modalContent
+        ? { isModalOpen: true, modalContent }
+        : { isModalOpen: false }
+    ),
 }));

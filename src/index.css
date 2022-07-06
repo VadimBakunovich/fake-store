@@ -89,11 +89,14 @@ h1 a:hover {
 }
 
 .ReactModal__Overlay {
+  position: fixed;
+  inset: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.3s ease-in-out;
 }
 
 .ReactModal__Overlay--after-open {
@@ -105,9 +108,14 @@ h1 a:hover {
 }
 
 .ReactModal__Content {
-  position: relative !important;
+  position: relative;
   width: fit-content;
   height: fit-content;
+  border-radius: 4px;
+  outline: none;
+  padding: 2vh min(2vh, 2vw);
+  background-color: #fffdfd;
+  box-shadow: 4px 4px 8px black;
 }
 
 .ReactModal__Btn-close {

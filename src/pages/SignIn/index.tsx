@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { AnimatedContainer } from 'components/AnimatedContainer';
 import { ValidationError } from 'components/ValidationError';
 import F from 'components/FormItems';
 import { EyeBtn } from 'components/Buttons/EyeBtn';
@@ -48,7 +47,7 @@ export default function SignIn() {
   };
 
   return (
-    <AnimatedContainer>
+    <>
       <F.Title>Sign In</F.Title>
       <F.Form onSubmit={handleSubmit(onSubmit)}>
         <F.Input
@@ -77,6 +76,6 @@ export default function SignIn() {
         <LinkBtnUC to='/signUp'>sign up</LinkBtnUC>
         <S.AuthErr err={authError}>{authError}</S.AuthErr>
       </F.Form>
-    </AnimatedContainer>
+    </>
   );
 }

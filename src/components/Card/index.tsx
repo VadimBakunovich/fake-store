@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { SkeletonCard } from 'components/Skeletons/SkeletonCard';
-import { IProduct } from 'interfaces';
+import IProduct from 'interfaces';
 import S from './styled';
 
 interface Props {
@@ -9,30 +9,22 @@ interface Props {
 }
 
 export function Card({ product }: Props) {
-  const img = new Image();
-  img.src = product.image;
-
-  const [isLoaded, setLoaded] = useState(img.complete);
-  const imgRef = useRef<HTMLImageElement | null>(null);
+  const [isLoaded, setLoaded] = useState(true);
 
   useEffect(() => {
-    if (imgRef.current && !isLoaded) {
-      imgRef.current.onload = () => setLoaded(true);
-    }
-    return () => {
-      if (imgRef.current) imgRef.current.onload = null;
-    };
+    const img = new Image();
+    img.src = product.image;
+    img.decode().then(() => setLoaded(true));
   }, []);
 
-  return (
-    <>
-      <S.Li isLoaded={isLoaded}>
-        <S.Link to={`/product/${product.id}`}>
-          <S.Img ref={imgRef} src={product.image} alt='product image' />
-          <S.Descr>{product.title}</S.Descr>
-        </S.Link>
-      </S.Li>
-      {!isLoaded && <SkeletonCard />}
-    </>
+  return isLoaded ? (
+    <S.Li>
+      <S.Link to={`/product/${product.id}`}>
+        <S.Img src={product.image} alt='product image' />
+        <S.Descr>{product.title}</S.Descr>
+      </S.Link>
+    </S.Li>
+  ) : (
+    <SkeletonCard />
   );
 }

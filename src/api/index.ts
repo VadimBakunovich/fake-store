@@ -1,22 +1,17 @@
-import axios from 'axios';
+import IProduct from 'interfaces';
 
-import { IProduct } from 'interfaces';
-
-const { get } = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL,
-});
-
-function getData<T = IProduct[]>(url: string): Promise<T> {
-  return get(url).then(({ data }) => data);
+function fetchData<T = IProduct[]>(url: string): Promise<T> {
+  const baseURL = import.meta.env.VITE_BASE_URL;
+  return fetch(baseURL + url).then(res => res.json());
 }
 
 export default {
-  fetchAllProducts: () => getData(''),
+  fetchAllProducts: () => fetchData(''),
 
-  fetchCategories: () => getData<string[]>('categories'),
+  fetchCategories: () => fetchData<string[]>('categories'),
 
   fetchProductsByCategory: (category: string) =>
-    getData(`category/${category}`),
+    fetchData(`category/${category}`),
 
-  fetchProductById: (id: string) => getData<IProduct>(id),
+  fetchProductById: (id: string) => fetchData<IProduct>(id),
 };
