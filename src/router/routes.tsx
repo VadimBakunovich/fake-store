@@ -1,10 +1,11 @@
 import { lazy } from 'react';
+import { RouteObject } from 'react-router-dom';
 
 import HomePage from 'pages/HomePage';
 
 const AllProducts = lazy(() => import('pages/AllProducts'));
-const Category = lazy(() => import('pages/Category'));
 const Product = lazy(() => import('pages/Product'));
+const Category = lazy(() => import('pages/Category'));
 const SignUp = lazy(() => import('pages/SignUp'));
 const SignIn = lazy(() => import('pages/SignIn'));
 const CartPage = lazy(() => import('pages/CartPage'));
@@ -13,20 +14,18 @@ const Checkout = lazy(() => import('pages/Checkout'));
 const NotFound = lazy(() => import('pages/NotFound'));
 
 export default [
-  { path: '/', element: <HomePage /> },
-  { path: 'all', element: <AllProducts /> },
-  { path: 'product/:id', element: <Product /> },
-  { path: 'category/:category', element: <Category /> },
-  { path: 'signUp', element: <SignUp /> },
-  { path: 'signIn', element: <SignIn /> },
-  { path: 'cart', element: <CartPage /> },
-  {
-    path: 'checkout',
-    element: (
-      <RequireAuth>
-        <Checkout />
-      </RequireAuth>
-    ),
-  },
-  { path: '*', element: <NotFound /> },
-];
+  ['/', <HomePage />],
+  ['all', <AllProducts />],
+  ['product/:id', <Product />],
+  ['category/:category', <Category />],
+  ['signUp', <SignUp />],
+  ['signIn', <SignIn />],
+  ['cart', <CartPage />],
+  [
+    'checkout',
+    <RequireAuth>
+      <Checkout />
+    </RequireAuth>,
+  ],
+  ['*', <NotFound />],
+].map(([path, element]) => ({ path, element } as RouteObject));

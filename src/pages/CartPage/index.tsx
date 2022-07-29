@@ -11,24 +11,22 @@ export default function CartPage() {
     return Number.isInteger(total) ? total : total.toFixed(2);
   }
 
-  return (
+  return cart.length ? (
     <>
-      {!cart.length && <h2>Your cart is empty</h2>}
-      {!!cart.length && (
-        <>
-          <ul>
-            {cart.map(item => (
-              <CartItem key={item.id} item={item} />
-            ))}
-          </ul>
-          <S.Wrapper>
-            <S.Total>Total: $ {getPrettyPrice()}</S.Total>
-            <LinkBtn to='/checkout' state={{ to: '/checkout' }}>
-              Proceed to Checkout
-            </LinkBtn>
-          </S.Wrapper>
-        </>
-      )}
+      <ul>
+        {cart.map(item => (
+          <CartItem key={item.id} item={item} />
+        ))}
+      </ul>
+
+      <S.Wrapper>
+        <S.Total>Total: $ {getPrettyPrice()}</S.Total>
+        <LinkBtn to='/checkout' state={{ to: '/checkout' }}>
+          Proceed to Checkout
+        </LinkBtn>
+      </S.Wrapper>
     </>
+  ) : (
+    <h2>Your cart is empty</h2>
   );
 }

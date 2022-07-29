@@ -8,6 +8,7 @@ import F from 'components/FormItems';
 import { EyeBtn } from 'components/Buttons/EyeBtn';
 import { RectBtnUC } from 'components/Buttons/RectBtn';
 import { LinkBtnUC } from 'components/Buttons/LinkBtn';
+
 import { useStore } from 'store';
 import schema from './schema';
 import S from './styled';
@@ -46,6 +47,8 @@ export default function SignIn() {
     } else setAuthErr('Wrong email or password');
   };
 
+  const handleClick = () => setPasswVisible(!isPasswVisible);
+
   return (
     <>
       <F.Title>Sign In</F.Title>
@@ -64,10 +67,7 @@ export default function SignIn() {
             {...register('password')}
           />
           <ValidationError message={errors.password?.message} />
-          <EyeBtn
-            isVisible={isPasswVisible}
-            handleClick={() => setPasswVisible(!isPasswVisible)}
-          />
+          <EyeBtn isVisible={isPasswVisible} handleClick={handleClick} />
         </F.PassWrapper>
 
         <F.Note>{C.NOTE}</F.Note>

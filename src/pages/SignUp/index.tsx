@@ -7,6 +7,7 @@ import { ValidationError } from 'components/ValidationError';
 import F from 'components/FormItems';
 import { EyeBtn } from 'components/Buttons/EyeBtn';
 import { RectBtnUC } from 'components/Buttons/RectBtn';
+
 import { useStore } from 'store';
 import schema from './schema';
 import C from 'constants';
@@ -39,6 +40,9 @@ export default function SignUp() {
     navigate('/', { replace: true });
   }
 
+  const handlePassVisible = () => setPasswVisible(!isPasswVisible);
+  const handleConfirmVisible = () => setConfirmVisible(!isConfirmVisible);
+
   return (
     <>
       <F.Title>Registration</F.Title>
@@ -64,10 +68,7 @@ export default function SignUp() {
             {...register('password')}
           />
           <ValidationError message={errors.password?.message} />
-          <EyeBtn
-            isVisible={isPasswVisible}
-            handleClick={() => setPasswVisible(!isPasswVisible)}
-          />
+          <EyeBtn isVisible={isPasswVisible} handleClick={handlePassVisible} />
         </F.PassWrapper>
 
         <F.PassWrapper>
@@ -79,7 +80,7 @@ export default function SignUp() {
           <ValidationError message={errors.confirmPassword?.message} />
           <EyeBtn
             isVisible={isConfirmVisible}
-            handleClick={() => setConfirmVisible(!isConfirmVisible)}
+            handleClick={handleConfirmVisible}
           />
         </F.PassWrapper>
 

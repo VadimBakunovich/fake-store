@@ -30,9 +30,11 @@ export const useStore = create<State>(set => ({
 
   cart: [],
   addToCart: product => set(({ cart }) => ({ cart: [...cart, product] })),
+
   delFromCart: id =>
     set(({ cart }) => ({ cart: cart.filter(item => item.id !== id) })),
   emptyCart: () => set(() => ({ cart: [] })),
+
   increaseNumber: id =>
     set(({ cart }) => ({
       cart: cart.map(item => {
@@ -45,6 +47,7 @@ export const useStore = create<State>(set => ({
         return item;
       }),
     })),
+
   decreaseNumber: id =>
     set(({ cart }) => ({
       cart: cart.map(item => {

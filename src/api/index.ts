@@ -1,9 +1,9 @@
 import IProduct from 'interfaces';
 
-function fetchData<T = IProduct[]>(url: string): Promise<T> {
-  const baseURL = import.meta.env.VITE_BASE_URL;
-  return fetch(baseURL + url).then(res => res.json());
-}
+const baseURL = import.meta.env.VITE_BASE_URL;
+
+const fetchData = <T = IProduct[]>(url: string): Promise<T> =>
+  fetch(baseURL + url).then(res => res.json());
 
 export default {
   fetchAllProducts: () => fetchData(''),

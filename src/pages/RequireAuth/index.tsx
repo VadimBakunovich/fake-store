@@ -11,7 +11,7 @@ export default function RequireAuth({ children }: Props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuth) navigate('/signIn', { state });
+    isAuth || navigate('/signIn', { state });
   }, []);
 
   // The solution below cause "Maximum update depth exceeded":

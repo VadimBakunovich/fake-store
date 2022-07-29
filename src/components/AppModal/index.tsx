@@ -6,19 +6,17 @@ Modal.setAppElement('#root');
 
 export default function AppModal() {
   const { isModalOpen, modalContent, toggleModalOpen } = useStore();
+  const handler = () => toggleModalOpen();
 
   return (
     <Modal
       overlayClassName=' '
       className=' '
       isOpen={isModalOpen}
-      onRequestClose={() => toggleModalOpen()}
+      onRequestClose={handler}
       closeTimeoutMS={300}
     >
-      <button
-        className='ReactModal__Btn-close'
-        onClick={() => toggleModalOpen()}
-      >
+      <button className='ReactModal__Btn-close' onClick={handler}>
         ✖
       </button>
       {modalContent}

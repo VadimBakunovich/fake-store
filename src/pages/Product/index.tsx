@@ -19,6 +19,7 @@ export default function Product() {
   const navigate = useNavigate();
 
   const queryClient = useQueryClient();
+
   const { data, isError, isLoading } = useQuery(
     ['product', id],
     () => api.fetchProductById(id),
@@ -33,33 +34,40 @@ export default function Product() {
   function handleAddToCart() {
     if (cart.some(item => item.id === data?.id)) isAdded.current = true;
     else addToCart(data!);
+
     setIsVisible(true);
     setTimeout(() => setIsVisible(false), 2000);
   }
+
+  const handleClick = () => navigate(-1);
 
   if (isError) return <h3>Oops, something went wrong...</h3>;
   if (isLoading) return <h3>Loading...</h3>;
 
   return (
     <>
-      <S.RoundBtn onClick={() => navigate(-1)} title='go back'>
+      <S.RoundBtn onClick={handleClick} title='go back'>
         &#8617;
       </S.RoundBtn>
+
       <S.Container>
         <S.Wrapper>
           <S.Category>{data?.category}</S.Category>
           <S.Title>{data?.title}</S.Title>
           <p>{data?.description}</p>
           <S.Price>$ {data?.price}</S.Price>
+
           <S.BtnWrapper>
             <RectBtn onClick={handleAddToCart}>Add to Cart</RectBtn>
             {!!cart.length && <LinkBtn to='/cart'>Go to Cart</LinkBtn>}
           </S.BtnWrapper>
+
           <S.Confirmation isVisible={isVisible}>
             {!isAdded.current && 'Product successfully added to cart.'}
             {isAdded.current && 'The product was added to the cart earlier.'}
           </S.Confirmation>
         </S.Wrapper>
+
         <S.Img src={data?.image} alt='product image' />
       </S.Container>
     </>

@@ -7,6 +7,8 @@ export default function Registration() {
   const emptyCart = useStore(state => state.emptyCart);
   const toggleAuthorize = useStore(state => state.toggleAuthorize);
 
+  const isNotRegister = userName && !isAuth;
+
   function handleClick() {
     emptyCart();
     toggleAuthorize();
@@ -15,8 +17,8 @@ export default function Registration() {
   return (
     <>
       <div>
-        {!isAuth && <S.NavLink to='signUp'>Sign Up</S.NavLink>}
-        {userName && !isAuth && <S.NavLink to='signIn'>Sign In</S.NavLink>}
+        {isAuth || <S.NavLink to='signUp'>Sign Up</S.NavLink>}
+        {isNotRegister && <S.NavLink to='signIn'>Sign In</S.NavLink>}
       </div>
       {isAuth && (
         <div>
